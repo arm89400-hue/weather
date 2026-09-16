@@ -1,0 +1,541 @@
+[
+  {
+    "id": 1,
+    "name_en": "Bangkok",
+    "name_th": "กรุงเทพมหานคร",
+    "lat": 13.7524938,
+    "lng": 100.4935089
+  },
+  {
+    "id": 2,
+    "name_en": "Samut Prakan",
+    "name_th": "สมุทรปราการ",
+    "lat": 13.6531651,
+    "lng": 100.8182578
+  },
+  {
+    "id": 3,
+    "name_en": "Nonthaburi",
+    "name_th": "นนทบุรี",
+    "lat": 13.8610918,
+    "lng": 100.3456772
+  },
+  {
+    "id": 4,
+    "name_en": "Pathum Thani",
+    "name_th": "ปทุมธานี",
+    "lat": 14.048667,
+    "lng": 100.5640405
+  },
+  {
+    "id": 5,
+    "name_en": "Phra Nakhon Si Ayutthaya",
+    "name_th": "พระนครศรีอยุธยา",
+    "lat": 14.3189468,
+    "lng": 100.5111681
+  },
+  {
+    "id": 6,
+    "name_en": "Ang Thong",
+    "name_th": "อ่างทอง",
+    "lat": 14.6495224,
+    "lng": 100.3170382
+  },
+  {
+    "id": 7,
+    "name_en": "Lopburi",
+    "name_th": "ลพบุรี",
+    "lat": 15.026458,
+    "lng": 100.8089178
+  },
+  {
+    "id": 8,
+    "name_en": "Sing Buri",
+    "name_th": "สิงห์บุรี",
+    "lat": 14.9936716,
+    "lng": 100.3602963
+  },
+  {
+    "id": 9,
+    "name_en": "Chai Nat",
+    "name_th": "ชัยนาท",
+    "lat": 15.1453182,
+    "lng": 99.9010244
+  },
+  {
+    "id": 10,
+    "name_en": "Saraburi",
+    "name_th": "สระบุรี",
+    "lat": 14.6240563,
+    "lng": 100.8601022
+  },
+  {
+    "id": 11,
+    "name_en": "Chon Buri",
+    "name_th": "ชลบุรี",
+    "lat": 13.1857117,
+    "lng": 101.1210777
+  },
+  {
+    "id": 12,
+    "name_en": "Rayong",
+    "name_th": "ระยอง",
+    "lat": 12.7943716,
+    "lng": 101.3705344
+  },
+  {
+    "id": 13,
+    "name_en": "Chanthaburi",
+    "name_th": "จันทบุรี",
+    "lat": 12.9081033,
+    "lng": 102.0159145
+  },
+  {
+    "id": 14,
+    "name_en": "Trat",
+    "name_th": "ตราด",
+    "lat": 12.2593544,
+    "lng": 102.4268871
+  },
+  {
+    "id": 15,
+    "name_en": "Chachoengsao",
+    "name_th": "ฉะเชิงเทรา",
+    "lat": 13.6093192,
+    "lng": 101.5467201
+  },
+  {
+    "id": 16,
+    "name_en": "Prachin Buri",
+    "name_th": "ปราจีนบุรี",
+    "lat": 14.1542055,
+    "lng": 101.5547823
+  },
+  {
+    "id": 17,
+    "name_en": "Nakhon Nayok",
+    "name_th": "นครนายก",
+    "lat": 14.1494474,
+    "lng": 101.2177459
+  },
+  {
+    "id": 18,
+    "name_en": "Sa Kaeo",
+    "name_th": "สระแก้ว",
+    "lat": 13.7686129,
+    "lng": 102.1345352
+  },
+  {
+    "id": 19,
+    "name_en": "Nakhon Ratchasima",
+    "name_th": "นครราชสีมา",
+    "lat": 14.9749389,
+    "lng": 102.0981358
+  },
+  {
+    "id": 20,
+    "name_en": "Buri Ram",
+    "name_th": "บุรีรัมย์",
+    "lat": 14.6107101,
+    "lng": 102.6453162
+  },
+  {
+    "id": 21,
+    "name_en": "Surin",
+    "name_th": "สุรินทร์",
+    "lat": 15.0610142,
+    "lng": 103.7613123
+  },
+  {
+    "id": 22,
+    "name_en": "Si Sa Ket",
+    "name_th": "ศรีสะเกษ",
+    "lat": 14.9222,
+    "lng": 104.4439596
+  },
+  {
+    "id": 23,
+    "name_en": "Ubon Ratchathani",
+    "name_th": "อุบลราชธานี",
+    "lat": 15.1879684,
+    "lng": 105.3269544
+  },
+  {
+    "id": 24,
+    "name_en": "Yasothon",
+    "name_th": "ยโสธร",
+    "lat": 16.0282186,
+    "lng": 104.2748479
+  },
+  {
+    "id": 25,
+    "name_en": "Chaiyaphum",
+    "name_th": "ชัยภูมิ",
+    "lat": 16.2720349,
+    "lng": 101.7153824
+  },
+  {
+    "id": 26,
+    "name_en": "Amnat Charoen",
+    "name_th": "อำนาจเจริญ",
+    "lat": 15.9949473,
+    "lng": 104.7328575
+  },
+  {
+    "id": 27,
+    "name_en": "Nong Bua Lam Phu",
+    "name_th": "หนองบัวลำภู",
+    "lat": 17.2022252,
+    "lng": 102.440702
+  },
+  {
+    "id": 28,
+    "name_en": "Khon Kaen",
+    "name_th": "ขอนแก่น",
+    "lat": 16.6022387,
+    "lng": 102.6352933
+  },
+  {
+    "id": 29,
+    "name_en": "Udon Thani",
+    "name_th": "อุดรธานี",
+    "lat": 17.5211917,
+    "lng": 102.6680012
+  },
+  {
+    "id": 30,
+    "name_en": "Loei",
+    "name_th": "เลย",
+    "lat": 17.3158563,
+    "lng": 101.4638277
+  },
+  {
+    "id": 31,
+    "name_en": "Nong Khai",
+    "name_th": "หนองคาย",
+    "lat": 17.9301421,
+    "lng": 102.4649809
+  },
+  {
+    "id": 32,
+    "name_en": "Maha Sarakham",
+    "name_th": "มหาสารคาม",
+    "lat": 15.9041448,
+    "lng": 103.0840638
+  },
+  {
+    "id": 33,
+    "name_en": "Roi Et",
+    "name_th": "ร้อยเอ็ด",
+    "lat": 15.7486448,
+    "lng": 103.7013017
+  },
+  {
+    "id": 34,
+    "name_en": "Kalasin",
+    "name_th": "กาฬสินธุ์",
+    "lat": 16.5912597,
+    "lng": 103.6525467
+  },
+  {
+    "id": 35,
+    "name_en": "Sakon Nakhon",
+    "name_th": "สกลนคร",
+    "lat": 17.1904453,
+    "lng": 103.9730898
+  },
+  {
+    "id": 36,
+    "name_en": "Nakhon Phanom",
+    "name_th": "นครพนม",
+    "lat": 17.1990989,
+    "lng": 104.6089459
+  },
+  {
+    "id": 37,
+    "name_en": "Mukdahan",
+    "name_th": "มุกดาหาร",
+    "lat": 16.6972385,
+    "lng": 104.3470293
+  },
+  {
+    "id": 38,
+    "name_en": "Chiang Mai",
+    "name_th": "เชียงใหม่",
+    "lat": 18.7882778,
+    "lng": 98.9858802
+  },
+  {
+    "id": 39,
+    "name_en": "Lamphun",
+    "name_th": "ลำพูน",
+    "lat": 18.2661422,
+    "lng": 98.96749
+  },
+  {
+    "id": 40,
+    "name_en": "Lampang",
+    "name_th": "ลำปาง",
+    "lat": 18.6799728,
+    "lng": 99.7332501
+  },
+  {
+    "id": 41,
+    "name_en": "Uttaradit",
+    "name_th": "อุตรดิตถ์",
+    "lat": 17.625163,
+    "lng": 100.4029452
+  },
+  {
+    "id": 42,
+    "name_en": "Phrae",
+    "name_th": "แพร่",
+    "lat": 18.2930601,
+    "lng": 100.0886757
+  },
+  {
+    "id": 43,
+    "name_en": "Nan",
+    "name_th": "น่าน",
+    "lat": 18.7544594,
+    "lng": 100.624804
+  },
+  {
+    "id": 44,
+    "name_en": "Phayao",
+    "name_th": "พะเยา",
+    "lat": 19.341673,
+    "lng": 100.1854539
+  },
+  {
+    "id": 45,
+    "name_en": "Chiang Rai",
+    "name_th": "เชียงราย",
+    "lat": 19.7589517,
+    "lng": 99.6734592
+  },
+  {
+    "id": 46,
+    "name_en": "Mae Hong Son",
+    "name_th": "แม่ฮ่องสอน",
+    "lat": 19.3927456,
+    "lng": 98.2031112
+  },
+  {
+    "id": 47,
+    "name_en": "Nakhon Sawan",
+    "name_th": "นครสวรรค์",
+    "lat": 15.7054772,
+    "lng": 99.9288481
+  },
+  {
+    "id": 48,
+    "name_en": "Uthai Thani",
+    "name_th": "อุทัยธานี",
+    "lat": 15.3912084,
+    "lng": 99.4560531
+  },
+  {
+    "id": 49,
+    "name_en": "Kamphaeng Phet",
+    "name_th": "กำแพงเพชร",
+    "lat": 16.4183581,
+    "lng": 99.6111616
+  },
+  {
+    "id": 50,
+    "name_en": "Tak",
+    "name_th": "ตาก",
+    "lat": 17.1053568,
+    "lng": 98.9953943
+  },
+  {
+    "id": 51,
+    "name_en": "Sukhothai",
+    "name_th": "สุโขทัย",
+    "lat": 17.1446985,
+    "lng": 99.4375845
+  },
+  {
+    "id": 52,
+    "name_en": "Phitsanulok",
+    "name_th": "พิษณุโลก",
+    "lat": 16.9779975,
+    "lng": 100.3848239
+  },
+  {
+    "id": 53,
+    "name_en": "Phichit",
+    "name_th": "พิจิตร",
+    "lat": 16.4551073,
+    "lng": 100.1924695
+  },
+  {
+    "id": 54,
+    "name_en": "Phetchabun",
+    "name_th": "เพชรบูรณ์",
+    "lat": 16.3293171,
+    "lng": 100.9552749
+  },
+  {
+    "id": 55,
+    "name_en": "Ratchaburi",
+    "name_th": "ราชบุรี",
+    "lat": 13.6317897,
+    "lng": 99.3558216
+  },
+  {
+    "id": 56,
+    "name_en": "Kanchanaburi",
+    "name_th": "กาญจนบุรี",
+    "lat": 14.44019,
+    "lng": 99.2676727
+  },
+  {
+    "id": 57,
+    "name_en": "Suphan Buri",
+    "name_th": "สุพรรณบุรี",
+    "lat": 14.6777,
+    "lng": 100.0350785
+  },
+  {
+    "id": 58,
+    "name_en": "Nakhon Pathom",
+    "name_th": "นครปฐม",
+    "lat": 13.8918425,
+    "lng": 100.0165659
+  },
+  {
+    "id": 59,
+    "name_en": "Samut Sakhon",
+    "name_th": "สมุทรสาคร",
+    "lat": 13.5708192,
+    "lng": 100.2585874
+  },
+  {
+    "id": 60,
+    "name_en": "Samut Songkhram",
+    "name_th": "สมุทรสงคราม",
+    "lat": 13.3576862,
+    "lng": 99.9619685
+  },
+  {
+    "id": 61,
+    "name_en": "Phetchaburi",
+    "name_th": "เพชรบุรี",
+    "lat": 13.0692869,
+    "lng": 99.6044376
+  },
+  {
+    "id": 62,
+    "name_en": "Prachuap Khiri Khan",
+    "name_th": "ประจวบคีรีขันธ์",
+    "lat": 12.0432669,
+    "lng": 99.7487235
+  },
+  {
+    "id": 63,
+    "name_en": "Nakhon Si Thammarat",
+    "name_th": "นครศรีธรรมราช",
+    "lat": 8.6772337,
+    "lng": 99.7309635
+  },
+  {
+    "id": 64,
+    "name_en": "Krabi",
+    "name_th": "กระบี่",
+    "lat": 8.1111653,
+    "lng": 99.1097298
+  },
+  {
+    "id": 65,
+    "name_en": "Phangnga",
+    "name_th": "พังงา",
+    "lat": 8.5010944,
+    "lng": 98.5068054
+  },
+  {
+    "id": 66,
+    "name_en": "Phuket",
+    "name_th": "ภูเก็ต",
+    "lat": 7.9366015,
+    "lng": 98.3529292
+  },
+  {
+    "id": 67,
+    "name_en": "Surat Thani",
+    "name_th": "สุราษฎร์ธานี",
+    "lat": 9.4674663,
+    "lng": 98.830042
+  },
+  {
+    "id": 68,
+    "name_en": "Ranong",
+    "name_th": "ระนอง",
+    "lat": 10.0469546,
+    "lng": 98.6870133
+  },
+  {
+    "id": 69,
+    "name_en": "Chumphon",
+    "name_th": "ชุมพร",
+    "lat": 10.3782724,
+    "lng": 99.0077685
+  },
+  {
+    "id": 70,
+    "name_en": "Songkhla",
+    "name_th": "สงขลา",
+    "lat": 6.8790221,
+    "lng": 100.5498542
+  },
+  {
+    "id": 71,
+    "name_en": "Satun",
+    "name_th": "สตูล",
+    "lat": 7.0366682,
+    "lng": 99.9615397
+  },
+  {
+    "id": 72,
+    "name_en": "Trang",
+    "name_th": "ตรัง",
+    "lat": 7.5892935,
+    "lng": 99.5032004
+  },
+  {
+    "id": 73,
+    "name_en": "Phatthalung",
+    "name_th": "พัทลุง",
+    "lat": 7.543525,
+    "lng": 99.9971582
+  },
+  {
+    "id": 74,
+    "name_en": "Pattani",
+    "name_th": "ปัตตานี",
+    "lat": 6.6997443,
+    "lng": 101.3989917
+  },
+  {
+    "id": 75,
+    "name_en": "Yala",
+    "name_th": "ยะลา",
+    "lat": 6.3344846,
+    "lng": 101.1409694
+  },
+  {
+    "id": 76,
+    "name_en": "Narathiwat",
+    "name_th": "นราธิวาส",
+    "lat": 6.3210758,
+    "lng": 101.5972971
+  },
+  {
+    "id": 77,
+    "name_en": "Bueng Kan",
+    "name_th": "บึงกาฬ",
+    "lat": 18.2329562,
+    "lng": 103.8267114
+  }
+]

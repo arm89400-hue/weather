@@ -1,0 +1,156 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id                String            @id @default(cuid())
+  email             String            @unique
+  passwordHash      String
+  name              String
+  role              Role              @default(USER)
+  /// Single location this user gets severe-weather push notifications for (see PushSubscription).
+  favoriteProvinceId String?
+  favoriteProvince  Province?         @relation(fields: [favoriteProvinceId], references: [id])
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  refreshTokens     RefreshToken[]
+  pushSubscriptions PushSubscription[]
+
+  @@index([favoriteProvinceId])
+}
+
+/// A browser/device's Web Push registration (https://developer.mozilla.org/en-US/docs/Web/API/Push_API).
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model RefreshToken {
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model Province {
+  id        String     @id @default(cuid())
+  /// id from the source reference dataset (kongvut/thai-province-data), used to upsert on reseed
+  sourceId  Int        @unique
+  nameTh    String
+  nameEn    String
+  region    String
+  lat       Float
+  lng       Float
+  districts District[]
+  stations  Station[]
+  followers User[]
+
+  @@index([nameEn])
+}
+
+model District {
+  id         String    @id @default(cuid())
+  /// id from the source reference dataset (kongvut/thai-province-data), used to upsert on reseed
+  sourceId   Int       @unique
+  provinceId String
+  province   Province  @relation(fields: [provinceId], references: [id], onDelete: Cascade)
+  nameTh     String
+  nameEn     String
+  // No reliable free per-district geocode source was found (see prisma/seed.ts) — nullable
+  // until district-level coordinates are sourced or manually curated.
+  lat        Float?
+  lng        Float?
+  stations   Station[]
+
+  @@index([provinceId])
+}
+
+enum StationType {
+  SYNOP
+  HYDRO
+  AGRO
+  OTHER
+}
+
+model Station {
+  id           String            @id @default(cuid())
+  tmdStationId String            @unique
+  nameTh       String
+  nameEn       String
+  lat          Float
+  lng          Float
+  stationType  StationType       @default(OTHER)
+  provinceId   String?
+  province     Province?         @relation(fields: [provinceId], references: [id])
+  districtId   String?
+  district     District?         @relation(fields: [districtId], references: [id])
+  readings     WeatherReading[]
+  forecasts    WeatherForecast[]
+  /// Tracks the last condition an alert was sent for, so ingestion only pushes on a genuinely
+  /// new severe-weather transition rather than every ingestion cycle of an ongoing storm.
+  lastAlertCondition String?
+  lastAlertAt        DateTime?
+
+  @@index([provinceId])
+  @@index([districtId])
+}
+
+model WeatherReading {
+  id           String   @id @default(cuid())
+  stationId    String
+  station      Station  @relation(fields: [stationId], references: [id], onDelete: Cascade)
+  observedAt   DateTime
+  temperature  Float?
+  feelsLike    Float?
+  humidity     Float?
+  rainfallMm   Float?
+  windSpeed    Float?
+  windDirection Float?
+  pressure     Float?
+  condition    String?
+  uvIndex      Float?
+  airQualityIndex Int?
+  raw          Json
+  createdAt    DateTime @default(now())
+
+  @@unique([stationId, observedAt])
+  @@index([stationId, observedAt])
+}
+
+model WeatherForecast {
+  id           String   @id @default(cuid())
+  stationId    String
+  station      Station  @relation(fields: [stationId], references: [id], onDelete: Cascade)
+  forecastDate DateTime
+  minTemp      Float?
+  maxTemp      Float?
+  condition    String?
+  rainChance   Float?
+  raw          Json
+  createdAt    DateTime @default(now())
+
+  @@unique([stationId, forecastDate])
+  @@index([stationId, forecastDate])
+}
