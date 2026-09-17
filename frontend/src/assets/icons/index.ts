@@ -2,6 +2,8 @@
 // imported as React components via vite-plugin-svgr, rather than pulled from the lucide-react
 // package at build time. Add a new icon by dropping its SVG here and re-exporting it below.
 export { default as CalendarDays } from "./calendar-days.svg?react";
+export { default as ChevronRight } from "./chevron-right.svg?react";
+export { default as CircleUser } from "./circle-user.svg?react";
 export { default as Cloud } from "./cloud.svg?react";
 export { default as CloudDrizzle } from "./cloud-drizzle.svg?react";
 export { default as CloudFog } from "./cloud-fog.svg?react";

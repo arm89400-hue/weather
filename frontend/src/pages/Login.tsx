@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTranslation } from "../i18n/useTranslation";
 
 export function LoginPage() {
   const { login } = useAuth();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +20,7 @@ export function LoginPage() {
       await login(email, password);
       navigate("/");
     } catch {
-      setError("Invalid email or password.");
+      setError(t("login.error"));
     } finally {
       setSubmitting(false);
     }
@@ -27,9 +29,9 @@ export function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center px-5">
       <form onSubmit={handleSubmit} className="glass-card w-full max-w-sm rounded-3xl p-8">
-        <h1 className="mb-6 text-2xl font-semibold">Sign in</h1>
+        <h1 className="mb-6 text-2xl font-semibold">{t("login.title")}</h1>
 
-        <label className="mb-1 block text-sm opacity-80">Email</label>
+        <label className="mb-1 block text-sm opacity-80">{t("login.email")}</label>
         <input
           type="email"
           required
@@ -39,7 +41,7 @@ export function LoginPage() {
           placeholder="you@example.com"
         />
 
-        <label className="mb-1 block text-sm opacity-80">Password</label>
+        <label className="mb-1 block text-sm opacity-80">{t("login.password")}</label>
         <input
           type="password"
           required
@@ -56,13 +58,13 @@ export function LoginPage() {
           disabled={submitting}
           className="w-full rounded-xl bg-sky-400/80 py-2 font-medium text-slate-900 transition hover:bg-sky-400 disabled:opacity-60"
         >
-          {submitting ? "Signing in..." : "Sign in"}
+          {submitting ? t("login.submitting") : t("login.submit")}
         </button>
 
         <p className="mt-4 text-center text-sm opacity-70">
-          No account?{" "}
+          {t("login.noAccount")}{" "}
           <Link to="/register" className="underline">
-            Register
+            {t("login.register")}
           </Link>
         </p>
       </form>

@@ -9,16 +9,10 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    // Lets local icon files (src/assets/icons/*.svg) be imported as React components via a
-    // `?react` suffix, e.g. `import MapPin from "../assets/icons/map-pin.svg?react"` — keeps
-    // the currentColor/className styling behavior our components already rely on.
     svgr(),
+
     VitePWA({
       registerType: 'autoUpdate',
-      // Custom service worker (src/sw.ts) instead of the fully auto-generated default — needed
-      // for push/notificationclick handlers, which generateSW mode has no room for. Caching
-      // rules (precache + NetworkOnly for /api and /socket.io) now live there instead of in a
-      // `workbox` option here.
       strategies: 'injectManifest',
       srcDir: 'src',
       filename: 'sw.ts',

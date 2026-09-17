@@ -1,5 +1,6 @@
 import { X } from "../assets/icons";
 import type { ReactNode } from "react";
+import { useTranslation } from "../i18n/useTranslation";
 
 type Props = {
   open: boolean;
@@ -9,6 +10,7 @@ type Props = {
 };
 
 export function Sheet({ open, onClose, title, children }: Props) {
+  const { t } = useTranslation();
   if (!open) return null;
 
   return (
@@ -26,7 +28,7 @@ export function Sheet({ open, onClose, title, children }: Props) {
           <button
             onClick={onClose}
             className="rounded-full p-1.5 opacity-70 transition hover:bg-white/10 hover:opacity-100"
-            aria-label="Close"
+            aria-label={t("common.close")}
           >
             <X className="h-4 w-4" />
           </button>

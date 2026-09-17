@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Droplets, List, MapPin, Settings, Wind as WindIcon } from "../assets/icons";
+import { CircleUser, Droplets, List, MapPin, Settings as SettingsIcon, Wind as WindIcon } from "../assets/icons";
 import { useEffect, useState } from "react";
 import { fetchDistricts, fetchProvinces } from "../api/geo";
 import { fetchCurrentWeather, fetchForecast } from "../api/weather";
@@ -8,11 +8,15 @@ import { ForecastList } from "../components/ForecastList";
 import { LocationPicker } from "../components/LocationPicker";
 import { LocationPrompt } from "../components/LocationPrompt";
 import { Sheet } from "../components/Sheet";
+import { SettingsPanel } from "../components/SettingsPanel";
 import { StatTile } from "../components/StatTile";
 import { SunArc } from "../components/SunArc";
 import { WeatherHero } from "../components/WeatherHero";
 import { useDeviceLocationProvince } from "../hooks/useDeviceLocationProvince";
 import { useWeatherSocket } from "../hooks/useWeatherSocket";
+import { useSettings } from "../context/SettingsContext";
+import { useTranslation } from "../i18n/useTranslation";
+import { localizedName } from "../lib/localizedName";
 
 const LAST_PROVINCE_KEY = "weather:lastProvinceId";
 const LAST_DISTRICT_KEY = "weather:lastDistrictId";
@@ -27,6 +31,9 @@ export function DashboardPage() {
   const [usedDeviceLocation, setUsedDeviceLocation] = useState(false);
   const [locationSheetOpen, setLocationSheetOpen] = useState(false);
   const [accountSheetOpen, setAccountSheetOpen] = useState(false);
+  const [settingsSheetOpen, setSettingsSheetOpen] = useState(false);
+  const { language } = useSettings();
+  const { t, translateRegion } = useTranslation();
   // Skip the ask if we already know where they were last time.
   const [locationPromptAnswered, setLocationPromptAnswered] = useState(
     () => !!localStorage.getItem(LAST_PROVINCE_KEY)
@@ -87,7 +94,7 @@ export function DashboardPage() {
 
   const province = provinces.find((p) => p.id === provinceId);
   const district = districts.find((d) => d.id === districtId);
-  const locationName = district?.nameEn ?? province?.nameEn ?? "—";
+  const locationName = localizedName(district, language) || localizedName(province, language) || t("common.dash");
   const reading = currentQuery.data?.reading ?? null;
   const todayForecast = forecastQuery.data?.forecasts?.[0];
   const showLocationPrompt = !provinceId && !locationPromptAnswered;
@@ -97,11 +104,13 @@ export function DashboardPage() {
       <div className="flex items-start justify-between px-5 pt-4">
         <div>
           <h1 className="text-lg font-semibold leading-tight">{locationName}</h1>
-          {province?.region && <p className="text-xs opacity-60">{province.region} Region</p>}
+          {province?.region && (
+            <p className="text-xs opacity-60">{t("region.suffix", { region: translateRegion(province.region) ?? "" })}</p>
+          )}
           <button
             onClick={() => setLocationSheetOpen(true)}
             className="mt-1 opacity-60 transition hover:opacity-100"
-            aria-label="Change location"
+            aria-label={t("header.changeLocation")}
           >
             <MapPin className="h-4 w-4" />
           </button>
@@ -111,16 +120,23 @@ export function DashboardPage() {
           <button
             onClick={() => setLocationSheetOpen(true)}
             className="rounded-full p-2.5 opacity-80 transition hover:bg-white/10 hover:opacity-100"
-            aria-label="Choose location"
+            aria-label={t("header.chooseLocation")}
           >
             <List className="h-4 w-4" />
           </button>
           <button
             onClick={() => setAccountSheetOpen(true)}
             className="rounded-full p-2.5 opacity-80 transition hover:bg-white/10 hover:opacity-100"
-            aria-label="Account"
+            aria-label={t("header.account")}
           >
-            <Settings className="h-4 w-4" />
+            <CircleUser className="h-4 w-4" />
+          </button>
+          <button
+            onClick={() => setSettingsSheetOpen(true)}
+            className="rounded-full p-2.5 opacity-80 transition hover:bg-white/10 hover:opacity-100"
+            aria-label={t("header.settings")}
+          >
+            <SettingsIcon className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -135,14 +151,11 @@ export function DashboardPage() {
         <>
           {locationStatus === "denied" && (
             <p className="px-5 pt-2 text-center text-xs opacity-60">
-              Location access denied — showing {province?.nameEn ?? "a default location"}. Use the list icon
-              above to choose your own.
+              {t("location.deniedNotice", { name: localizedName(province, language) || locationName })}
             </p>
           )}
           {usedDeviceLocation && locationStatus === "resolved" && (
-            <p className="px-5 pt-2 text-center text-xs opacity-60">
-              Showing weather near your device location.
-            </p>
+            <p className="px-5 pt-2 text-center text-xs opacity-60">{t("location.deviceNotice")}</p>
           )}
 
           <WeatherHero data={currentQuery.data} todayForecast={todayForecast} isLoading={currentQuery.isLoading} />
@@ -153,27 +166,30 @@ export function DashboardPage() {
             <div className="grid grid-cols-2 gap-4">
               <StatTile
                 icon={Droplets}
-                label="Precipitation"
-                value={reading?.rainfallMm != null ? reading.rainfallMm.toFixed(1) : "—"}
+                label={t("stat.precipitation")}
+                value={reading?.rainfallMm != null ? reading.rainfallMm.toFixed(1) : t("common.dash")}
                 unit="mm"
-                subtitle="Pay attention to waterproofing and standing water."
+                subtitle={t("stat.precipitationSubtitle")}
               />
               <StatTile
                 icon={WindIcon}
-                label="Wind"
-                value={reading?.windSpeed != null ? Math.round(reading.windSpeed) : "—"}
+                label={t("stat.wind")}
+                value={reading?.windSpeed != null ? Math.round(reading.windSpeed) : t("common.dash")}
                 unit="km/h"
                 subtitle={
                   currentQuery.data?.wind?.directionLabel
-                    ? `${currentQuery.data.wind.directionLabel} wind, scale ${currentQuery.data.wind.scale ?? "—"}`
+                    ? t("stat.windSubtitle", {
+                        dir: currentQuery.data.wind.directionLabel,
+                        scale: currentQuery.data.wind.scale ?? t("common.dash"),
+                      })
                     : undefined
                 }
               />
               <div className="col-span-2">
                 <StatTile
                   icon={Droplets}
-                  label="Humidity"
-                  value={reading?.humidity != null ? Math.round(reading.humidity) : "—"}
+                  label={t("stat.humidity")}
+                  value={reading?.humidity != null ? Math.round(reading.humidity) : t("common.dash")}
                   unit="%"
                 />
               </div>
@@ -186,7 +202,7 @@ export function DashboardPage() {
         </>
       )}
 
-      <Sheet open={locationSheetOpen} onClose={() => setLocationSheetOpen(false)} title="Choose location">
+      <Sheet open={locationSheetOpen} onClose={() => setLocationSheetOpen(false)} title={t("sheet.location")}>
         <LocationPicker
           provinceId={provinceId}
           districtId={districtId}
@@ -204,8 +220,12 @@ export function DashboardPage() {
         />
       </Sheet>
 
-      <Sheet open={accountSheetOpen} onClose={() => setAccountSheetOpen(false)} title="Account">
+      <Sheet open={accountSheetOpen} onClose={() => setAccountSheetOpen(false)} title={t("sheet.account")}>
         <AccountPanel onClose={() => setAccountSheetOpen(false)} />
+      </Sheet>
+
+      <Sheet open={settingsSheetOpen} onClose={() => setSettingsSheetOpen(false)} title={t("sheet.settings")}>
+        <SettingsPanel />
       </Sheet>
     </div>
   );

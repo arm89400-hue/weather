@@ -9,7 +9,7 @@ const config: CapacitorConfig = {
   appName: 'Weather Alert',
   webDir: 'dist',
   server: {
-    url: 'https://implement-share-tba-modems.trycloudflare.com',
+    url: 'https://relate-bonus-future-consensus.trycloudflare.com',
     cleartext: false
   }
 };
